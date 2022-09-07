@@ -1,10 +1,21 @@
 //This is the section of code to let the computer find a random choice.
 const choices = ["rock", "paper", "scissors"];
+let winners = [];
+
+function game() {
+    for (let i =1; i <= 5; i++) {
+        playRound(i)
+    }
+    document.querySelector("button").textContent = "Play Again";
+    logWins();
+}
 
 function playRound(round) {
     const playerSelection = playerChoice();
     const computerSelection = getComputerChoice();
-    console.log(playerSelection, computerSelection);
+    const winner = checkWinner(playerSelection, computerSelection);
+    winners.push(winner);
+    logRound(playerSelection, computerSelection, winner, round);
 }
 
 function getComputerChoice() {
@@ -39,16 +50,34 @@ function validateInput(choice) {
 
 function checkWinner(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
-        return "You have TIED the computer";
+        return "Tie";
     }
     else if (
         (playerChoice === "rock" && computerChoice === "scissors") ||
         (playerChoice === "paper" && computerChoice === "rock") ||
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
-        return "You Have Beaten the computer, good joB!"
+        return "Player"
     }
     else {
-        return "The computer has won."
+        return "Computer"
     }
+}
+
+function logRound(playerChoice, computerChoice, winner, round) {
+    console.log("Round:", round);
+    console.log("Player chose:", playerChoice);
+    console.log("Computer chose:", computerChoice);
+    console.log(winner, "won the round");
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+}
+
+function logWins() {
+    let playerWins = winners.filter((item) => item == "Player").length;
+    let computerWins = winners.filter((item) => item == "Computer").length;
+    let ties = winners.filter((item) => item == "Tie").length;
+    console.log("RESULTS:");
+    console.log("Player wins:", playerWins);
+    console.log("Computer wins:", computerWins);
+    console.log("Ties:", ties); 
 }
