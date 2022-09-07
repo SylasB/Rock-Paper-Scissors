@@ -8,7 +8,7 @@ function playRound(round) {
 }
 
 function getComputerChoice() {
-    return [Math.floor(Math.random() * choices.length)];
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 function playerChoice() {
@@ -34,7 +34,21 @@ function playerChoice() {
 }
 
 function validateInput(choice) {
-    return choices.includes(choices);
+    return choices.includes(choice);
 }
 
-console.log(input);
+function checkWinner(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+        return "You have TIED the computer";
+    }
+    else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+        return "You Have Beaten the computer, good joB!"
+    }
+    else {
+        return "The computer has won."
+    }
+}
