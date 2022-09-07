@@ -13,5 +13,28 @@ function getComputerChoice() {
 
 function playerChoice() {
     let input = prompt("Type Rock, Paper, or Scissors");
-    
+    while (input == null) {
+        input = prompt("Type Rock, Paper, or Scissors");
+    }
+    input = input.toLowerCase();
+    let check = validateInput(input);
+    while (check == false) {
+        input = prompt(
+            "Please type only 'Rock' 'Paper' or 'Scissors'. Capitalization does not matter. "
+            );
+    while (input == null){
+        input = prompt(
+            "Type Rock, Paper, or Scissors"
+        );
+    }
+    input = input.toLowerCase();
+    check = validateInput(input);
+    }
+    return input; 
 }
+
+function validateInput(choice) {
+    return choices.includes(choices);
+}
+
+console.log(input);
