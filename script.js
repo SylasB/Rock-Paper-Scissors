@@ -1,6 +1,6 @@
-//This is the section of code to let the computer find a random choice.
 const choices = ["rock", "paper", "scissors"];
 let winners = [];
+let champion = [];
 
 function game() {
     for (let i =1; i <= 5; i++) {
@@ -80,4 +80,30 @@ function logWins() {
     console.log("Player wins:", playerWins);
     console.log("Computer wins:", computerWins);
     console.log("Ties:", ties); 
+}
+
+//New Code for working on the UserInterface
+
+function playRoundRock(round) {
+    const playerSelection = "rock";
+    const computerSelection = getComputerChoice();
+    const winner = checkWinner(playerSelection, computerSelection);
+    champion.push(winner);
+    logRound(playerSelection, computerSelection, winner, round);
+}
+
+function playRoundPaper(round) {
+    const playerSelection = "paper";
+    const computerSelection = getComputerChoice();
+    const winner = checkWinner(playerSelection, computerSelection);
+    champion.push(winner);
+    logRound(playerSelection, computerSelection, winner, round);
+}
+
+function playRoundScissors(round) {
+    const playerSelection = "Scissors";
+    const computerSelection = getComputerChoice();
+    const winner = checkWinner(playerSelection, computerSelection);
+    champion.push(winner);
+    logRound(playerSelection, computerSelection, winner, round);
 }
