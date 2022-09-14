@@ -171,8 +171,8 @@ function checkWinner(pChoice, cChoice) {
     if (
         (pChoice == "rock" && cChoice == "scissors") ||
         (pChoice == "paper" && cChoice == "rock") ||
-        (pChoice == "scissors" && cChoice == "paper") ||
-    ) {
+        (pChoice == "scissors" && cChoice == "paper"))
+     {
         return "Player";
     } 
     else if (pChoice == cChoice) {
@@ -187,4 +187,15 @@ function setWins() {
     const pWins = winners.filter((item) => item == "Player").length;
     const cWins = winners.filter((item) => item == "Computer").length;
     const ties = winners.filter((item) => item == "Tie").length;
+}
+
+function resetGame() {
+    winners = [];
+    document.querySelector(".playerScore").textContent = "Score: 0";
+    document.querySelector(".computerScore").textContent = "Score: 0";
+    document.querySelector(".ties").textContent = "Ties: 0";
+    document.querySelector(".winner").textContent = "";
+    document.querySelector(".playerChoice").textContent = "";
+    document.querySelector(".computerChoice").textContent = "";
+    document.querySelector(".reset").style.display = "none";
 }
