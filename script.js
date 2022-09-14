@@ -107,3 +107,10 @@ function playRoundScissors(round) {
     champion.push(winner);
     logRound(playerSelection, computerSelection, winner, round);
 }
+
+const results = document.querySelector('#results');
+
+const content = document.createElement('p');
+content.classList.add('content');
+content.textContent = `Winners: ${winners}`;
+results.appendChild(content);

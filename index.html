@@ -12,13 +12,13 @@
     <div class="rock">
         <h1>Welcome to Rock-Paper-Scissors</h1>
         <button onclick="game()">Play Game in the console</button>
-        <div>
-            <button onclick="playRoundRock()" >ROCK</button>
-            <button onclick="playRoundPaper()">PAPER</button>
-            <button onclick="playRoundScissors()">SCISSORS</button>
+        <div class="playerSelection">
+            <img src="/images/rock.png" onclick="playRoundRock()" >
+            <img src="/images/paper.png" onclick="playRoundPaper()">
+            <img src="/images/scissors.png" onclick="playRoundScissors()">
         </div>
-        <div class="results">
-            <h3>Results</h3>
+        <div id="results">
+
         </div>
         <p>
             Open the console to see the results of the game.
