@@ -84,33 +84,9 @@ function logWins() {
 
 //New Code for working on the UserInterface
 
-function playRoundRock(round) {
-    const playerSelection = "rock";
-    const computerSelection = getComputerChoice();
-    const winner = checkWinner(playerSelection, computerSelection);
-    champion.push(winner);
-    logRound(playerSelection, computerSelection, winner, round);
-}
-
-function playRoundPaper(round) {
-    const playerSelection = "paper";
-    const computerSelection = getComputerChoice();
-    const winner = checkWinner(playerSelection, computerSelection);
-    champion.push(winner);
-    logRound(playerSelection, computerSelection, winner, round);
-}
-
-function playRoundScissors(round) {
-    const playerSelection = "Scissors";
-    const computerSelection = getComputerChoice();
-    const winner = checkWinner(playerSelection, computerSelection);
-    champion.push(winner);
-    logRound(playerSelection, computerSelection, winner, round);
-}
-
 const results = document.querySelector('#results');
 
 const content = document.createElement('p');
 content.classList.add('content');
-content.textContent = `Winners: ${winners}`;
+content.textContent = `Winners: ${checkWinner('click', getComputerChoice())}`;
 results.appendChild(content);

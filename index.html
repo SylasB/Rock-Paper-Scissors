@@ -9,16 +9,39 @@
    
 </head>
 <body>
+    <div class="title">
+        <h1>Welcome to Rock, Paper, Scissors!</h1>
+    </div>
     <div class="rock">
-        <h1>Welcome to Rock-Paper-Scissors</h1>
-        <button onclick="game()">Play Game in the console</button>
+       <!-- <h1>Welcome to Rock-Paper-Scissors</h1>
+        <button onclick="game()">Play Game in the console</button> -->
+        <div>
+            <p>
+                Player has chosen: 
+            </p>
+            <p>
+                Player wins: 0
+            </p>
+        </div>  
         <div class="playerSelection">
-            <img src="/images/rock.png" onclick="playRoundRock()" >
-            <img src="/images/paper.png" onclick="playRoundPaper()">
-            <img src="/images/scissors.png" onclick="playRoundScissors()">
+            <img src="/images/rock.png" alt="Rock" class="playerImage">
+            <img src="/images/paper.png" alt="Paper" class="playerImage">
+            <img src="/images/scissors.png" alt="Scissors" class="playerImage">
         </div>
-        <div id="results">
-
+        <div>
+            <p class="">
+                Computer has chosen: 
+            </p>
+            <p class="">
+                Computer wins: 0
+            </p>
+        </div>
+        <div class="computerSelection">
+            <img src="/images/rock.png" alt="rock">
+            <img src="/images/paper.png" alt="paper">
+            <img src="/images/scissors.png" alt="scissors">
+        </div>
+        <div id="results"> 
         </div>
         <p>
             Open the console to see the results of the game.
