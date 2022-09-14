@@ -1,7 +1,7 @@
 const choices = ["rock", "paper", "scissors"];
 let winners = [];
-let champion = [];
 
+/* 
 function game() {
     for (let i =1; i <= 5; i++) {
         playRound(i)
@@ -10,13 +10,15 @@ function game() {
     logWins();
 }
 
-function playRound(round) {
+
+function playRound2(round) {
     const playerSelection = playerChoice();
     const computerSelection = getComputerChoice();
     const winner = checkWinner(playerSelection, computerSelection);
     winners.push(winner);
     logRound(playerSelection, computerSelection, winner, round);
 }
+
 
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
@@ -81,12 +83,108 @@ function logWins() {
     console.log("Computer wins:", computerWins);
     console.log("Ties:", ties); 
 }
+*/
+
 
 //New Code for working on the UserInterface
 
-const results = document.querySelector('#results');
+function startGame() {
+    let imgs = document.querySelectorAll("img");
+    imgs.forEach((img) => 
+    img.addEventListener("click", () => {
+        if (img.id) {
+            playRound(img.id);
+        }
+    })
+    );
+}
 
-const content = document.createElement('p');
-content.classList.add('content');
-content.textContent = `Winners: ${checkWinner('click', getComputerChoice())}`;
-results.appendChild(content);
+function playRound(playerSelection) {
+    let wins = checkWins();
+    if (wins >=5) {
+        return;
+    }
+    const computerChoice = computerSelect(); 
+    const winner = checkWinner(playerChoice, computerChoice);
+    winners.push(winner);
+    displayRound(playerChoice, computerChoice, winner);
+    wins = checkWins();
+    if (wins == 5) {
+        displayEnd();
+    }
+}
+
+function computerSelect() {
+    const choice = choices[Math.floor(Math.random() * choices.length)];
+
+    document.querySelector(`.${choice}`).classList.add("active");
+
+    return choice;
+}
+
+function displayEnd() {
+    let playerWins = winners.filter((item) => item == "Player").length; 
+
+    if (playerWins == 5) {
+        document.querySelector(".winner").textContent = "CONGRAGULATIONS YOU WON";
+    }
+    else {
+        document.querySelector(".winner").textContent = "The computer won, try again."
+    }
+    document.querySelector(".winner").textContent = "It's a tie, play again!"
+}
+
+function displayRound(playerChoice, computerChoice, winner) {
+    document.querySelector(".playerChoice").textContent = 'You chose: ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)}';
+    document.querySelector(".computerChoice").textContent = 'The Computer chose: ${computerChoice}.charAt(0).toUpperCase() + computerChoice.slice(1)}';
+    displayRoundWinner(winner);
+}
+
+function displayRoundWinner(winner) {
+    if (winner == "Player") {
+        document.querySelector(".winner").textContent = "YOU WON THE ROUND!!";
+    }
+    else if (winner == "{Computer") {
+        document.querySelector(".winner").textContent = "The computer won the round, try again.";
+    } 
+    else {
+        document.querySelector(".winner").textContent = "The round ended in a tie.";
+    }
+}
+
+function tallyWins() {
+    const pWins = winners.filter((item) => item == "Player").length;
+    const cWins = winners.filter((item) => item == "Computer").length;
+    const ties = winners.filter((item) => item == "Tie").length;
+    document.querySelector(".playerScore").textContent = 'Score: ${pWins}';
+    document.querySelector(".computerScore").textContent = 'Score: ${cWins}';
+    document.querySelector(".ties").textContent = 'Score: ${ties}';
+}
+
+function checkWins() {
+    const pWins = winners.filter((item) => item == "Player").length;
+    const cWins = winners.filter((item) => item == "Computer").length;
+    return Math.max(pWins, cWins);
+}
+
+function checkWinner(pChoice, cChoice) {
+    if (
+        (pChoice == "rock" && cChoice == "scissors") ||
+        (pChoice == "paper" && cChoice == "rock") ||
+        (pChoice == "scissors" && cChoice == "paper") ||
+    ) {
+        return "Player";
+    } 
+    else if (pChoice == cChoice) {
+        return "Tie";
+    }
+    else {
+        return "Computer";
+    }
+}
+
+function setWins() {
+    const pWins = winners.filter((item) => item == "Player").length;
+    const cWins = winners.filter((item) => item == "Computer").length;
+    const ties = winners.filter((item) => item == "Tie").length;
+}
