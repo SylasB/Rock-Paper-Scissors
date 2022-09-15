@@ -15,38 +15,32 @@
     <div class="rock">
        <!-- <h1>Welcome to Rock-Paper-Scissors</h1>
         <button onclick="game()">Play Game in the console</button> -->
-        <div>
-            <p class="">
-                Player has chosen: 
-            </p>
-            <p class="">
-                Player wins: 0
-            </p>
-        </div>  
+        <div class="score">
+           <h1 class="ties">Ties: 0</h1>
+            <h1 class="winner"></h1>
+        </div>
+        
         <div class="playerSelection">
-            <img src="/images/rock.png" alt="Rock" class="playerImage" id="rock">
-            <img src="/images/paper.png" alt="Paper" class="playerImage" id="paper">
-            <img src="/images/scissors.png" alt="Scissors" class="playerImage" id="scissors">
+            <h3 class="playerChoice"></h3>
+            <h3 class="playerScore">Score: 0</h3>
+                <div playerImgs>
+                    <img src="/images/rock.png" alt="Rock" class="playerImage" id="rock">
+                    <img src="/images/paper.png" alt="Paper" class="playerImage" id="paper">
+                    <img src="/images/scissors.png" alt="Scissors" class="playerImage" id="scissors">
+                </div>
         </div>
-        <div>
-            <p class="">
-                Computer has chosen: 
-            </p>
-            <p class="">
-                Computer wins: 0
-            </p>
-        </div>
-        <div class="computerSelection">
+
+        <div class="computerSection">
+            <h3 class="computerChoice"></h3>
+            <h3 class="computerScore">Score: 0</h3>
             <img src="/images/rock.png" alt="rock">
             <img src="/images/paper.png" alt="paper">
             <img src="/images/scissors.png" alt="scissors">
         </div>
-        <div id="results"> 
-        </div>
-        <p>
-            Open the console to see the results of the game.
-        </p>
-    </div>
+    <div class="winnerDiv">
+
+        <button class="reset" onclick="resetGame()">Play Again?</button>
+    </div> 
  <script src="/script.js"></script>
 </body>
 </html>

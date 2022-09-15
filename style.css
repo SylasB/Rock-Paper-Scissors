@@ -21,3 +21,18 @@ img {
 .title {
   text-align: center;
 }
+
+.reset {
+  display: table-cell;
+  vertical-align: middle;
+  margin: 10px;
+  height: auto;
+  min-height: 55px;
+}
+
+.winnerDiv {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}

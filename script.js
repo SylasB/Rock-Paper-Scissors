@@ -105,9 +105,10 @@ function playRound(playerSelection) {
         return;
     }
     const computerChoice = computerSelect(); 
-    const winner = checkWinner(playerChoice, computerChoice);
+    const winner = checkWinner(playerSelection, computerChoice);
     winners.push(winner);
-    displayRound(playerChoice, computerChoice, winner);
+    tallyWins();
+    displayRound(playerSelection, computerChoice, winner);
     wins = checkWins();
     if (wins == 5) {
         displayEnd();
@@ -117,7 +118,13 @@ function playRound(playerSelection) {
 function computerSelect() {
     const choice = choices[Math.floor(Math.random() * choices.length)];
 
-    document.querySelector(`.${choice}`).classList.add("active");
+    //document.querySelector(`.${choice}`).classList.add("active");
+
+    /*
+    setTimeout(() => {
+        document.querySelector(`.${choice}`).classList.remove("active");
+      }, 700);
+      */
 
     return choice;
 }
@@ -127,16 +134,17 @@ function displayEnd() {
 
     if (playerWins == 5) {
         document.querySelector(".winner").textContent = "CONGRAGULATIONS YOU WON";
+        alert("YOU HAVE WON THE GAME!");
     }
     else {
         document.querySelector(".winner").textContent = "The computer won, try again."
     }
-    document.querySelector(".winner").textContent = "It's a tie, play again!"
+    document.querySelector(".reset").style.display = "flex";
 }
 
 function displayRound(playerChoice, computerChoice, winner) {
-    document.querySelector(".playerChoice").textContent = 'You chose: ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)}';
-    document.querySelector(".computerChoice").textContent = 'The Computer chose: ${computerChoice}.charAt(0).toUpperCase() + computerChoice.slice(1)}';
+    document.querySelector(".playerChoice").textContent = `You chose: ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)}`;
+    document.querySelector(".computerChoice").textContent = `The Computer chose: ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`;
     displayRoundWinner(winner);
 }
 
@@ -156,9 +164,10 @@ function tallyWins() {
     const pWins = winners.filter((item) => item == "Player").length;
     const cWins = winners.filter((item) => item == "Computer").length;
     const ties = winners.filter((item) => item == "Tie").length;
-    document.querySelector(".playerScore").textContent = 'Score: ${pWins}';
-    document.querySelector(".computerScore").textContent = 'Score: ${cWins}';
-    document.querySelector(".ties").textContent = 'Score: ${ties}';
+    document.querySelector(".playerScore").textContent = `Score: ${pWins}`;
+    document.querySelector(".computerScore").textContent = `Score: ${cWins}`;
+    document.querySelector(".ties").textContent = `Score: ${ties}`;
+    console.log(`Score: ${pWins}`);
 }
 
 function checkWins() {
@@ -197,5 +206,7 @@ function resetGame() {
     document.querySelector(".winner").textContent = "";
     document.querySelector(".playerChoice").textContent = "";
     document.querySelector(".computerChoice").textContent = "";
-    document.querySelector(".reset").style.display = "none";
+    document.querySelector(".reset").style.display = "active";
 }
+
+startGame();
